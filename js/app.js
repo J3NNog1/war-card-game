@@ -15,6 +15,8 @@ let deck4El = document.getElementById('deck-4')
 console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
 
+document.getElementById('btn').addEventListener('click', ()=> console.log('clicked'))
+
 // Functions
 
 // Initialize deck 1 with array of 52 cards 
