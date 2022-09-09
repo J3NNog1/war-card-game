@@ -6,7 +6,13 @@ let deck4 = []
 let cardToRemove
 
 // Cached element references
+let deck1El = document.getElementById('deck-1')
+let deck2El = document.getElementById('deck-2')
+let deck3El = document.getElementById('deck-3')
+let deck4El = document.getElementById('deck-4')
 
+
+console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
 
 // Functions
