@@ -18,7 +18,6 @@ console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
 
 document.getElementById('btn-1').addEventListener('click', ()=> console.log('clicked'))
-document.getElementById('btn-2').addEventListener('click', ()=> console.log('clicked'))
 
 // Functions
 
