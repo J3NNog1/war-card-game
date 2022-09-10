@@ -66,15 +66,27 @@ function render(cardPicked1, cardPicked2) {
     deck1El.classList.remove('outline')
     deck3El.classList.remove('outline')
   }
-  if (deck2.length > 1) {
+  if (deck1.length > 1) {
     deck2El.classList.remove(cardToRemove1)
     deck4El.classList.remove(cardToRemove2)
   }
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
   
-  deck2El.classList.add(cardPicked1)
-  deck4El.classList.add(cardPicked2)
+  deck1El.classList.add(cardPicked1)
+  deck3El.classList.add(cardPicked2)
 
-	
+	if (deck2.length === 13) {
+    deck1El.classList.add('shadow')
+    deck3El.classList.add('shadow')
+    deck2El.classList.remove('shadow')
+    deck4El.classList.remove('shadow')
+  }
+  if (deck2.length === 0) {
+    deck2El.classList.add('outline')
+    deck4El.classList.add('outline')
+    deck2El.classList.remove('back-blue')
+    deck4El.classList.remove('back-blue')
+  }
+  
 }
