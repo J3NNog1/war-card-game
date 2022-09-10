@@ -20,10 +20,10 @@ console.log(deck1El, deck2El, deck3El, deck4El)
 
 document.getElementById('btn-1').addEventListener('click', ()=> handleClick())
 
+
 // Functions
 
 init()
-
 
 
 function init() {
@@ -89,3 +89,4 @@ function render(cardPicked1, cardPicked2) {
   }
   
 }
+
