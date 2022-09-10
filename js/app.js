@@ -50,18 +50,23 @@ function handleClick() {
     let cardPicked1 = deck2.splice(randIdx, 1)
     let cardPicked2 = deck4.splice(randIdx, 1)
     
-    console.log(cardPicked1, cardPicked2)
+    deck1.push(cardPicked1)
+    deck3.push(cardPicked2)
 
+    console.log(deck2, 'deck2')
+    console.log(deck1, 'deck1')
+    console.log(deck3, 'deck3')
+    console.log(deck4, 'deck4')
   render()
   }
 }
     
 
 // Function to render deck state
-// function render(cardPicked1, cardPicked2) {
-// 	 // Remove outline class when first card is picked
-//    // Removes previous picked card from deck 2 class list
-//    // Add current card picked to deck 2 element
-// 	 // Adjust shadow when deck gets above/below halfway full
-// 	 // Remove card back color and add outline when last card is picked
-// }
+function render(cardPicked1, cardPicked2) {
+	 // Remove outline class when first card is picked
+   // Removes previous picked card from deck 2 class list
+   // Add current card picked to deck 2 element
+	 // Adjust shadow when deck gets above/below halfway full
+	 // Remove card back color and add outline when last card is picked
+}
