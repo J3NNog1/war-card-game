@@ -26,14 +26,22 @@ init()
 
 
 
-// Initialize deck 1 with array of 52 cards 
-
 function init() {
-  deck2 = [...masterDeck]
-  deck4 = [...masterDeck]
-  console.log(deck2, deck4)
+  const shuffledDeck = shuffle([...masterDeck])
+  deck2 = shuffledDeck.slice(0, 26)
+  deck4 = shuffledDeck.slice(26)
 }
 
+function shuffle(array) {
+  let j, x, i;
+  for (i = array.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = array[i];
+      array[i] = array[j];
+      array[j] = x;
+  }
+  return array
+}
 
 // Function to handle a button click:
     // Randomly select number from total cards remaining
