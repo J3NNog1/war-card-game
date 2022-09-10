@@ -17,7 +17,7 @@ let deck4El = document.getElementById('deck4')
 console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
 
-document.getElementById('btn-1').addEventListener('click', ()=> console.log('clicked'))
+document.getElementById('btn-1').addEventListener('click', ()=> handleClick())
 
 // Functions
 
@@ -43,15 +43,25 @@ function shuffle(array) {
 }
 
 // Function to handle a button click:
-    // Randomly select number from total cards remaining
-    // Assign card with the random index to a variable
-    // Add card picked to deck 2
-    // Pass card picked to render function to display
 
+function handleClick() {
+  if (deck2.length > 0 )  {
+    let randIdx = Math.floor(Math.random() * deck2.length)
+    let cardPicked1 = deck2.splice(randIdx, 1)
+    let cardPicked2 = deck4.splice(randIdx, 1)
+    
+    console.log(cardPicked1, cardPicked2)
+
+  render()
+  }
+}
+    
 
 // Function to render deck state
-	 // Remove outline class when first card is picked
-   // Removes previous picked card from deck 2 class list
-   // Add current card picked to deck 2 element
-	 // Adjust shadow when deck gets above/below halfway full
-	 // Remove card back color and add outline when last card is picked
+// function render(cardPicked1, cardPicked2) {
+// 	 // Remove outline class when first card is picked
+//    // Removes previous picked card from deck 2 class list
+//    // Add current card picked to deck 2 element
+// 	 // Adjust shadow when deck gets above/below halfway full
+// 	 // Remove card back color and add outline when last card is picked
+// }
