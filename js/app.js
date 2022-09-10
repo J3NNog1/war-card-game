@@ -48,9 +48,8 @@ function shuffle(array) {
 function handleClick() {
   if (deck2.length > 0 )  {
     let randIdx = Math.floor(Math.random() * deck2.length)
-    let cardPicked1 = deck2.splice(randIdx, 1)
-    let cardPicked2 = deck4.splice(randIdx, 1)
-    
+    let cardPicked1 = deck2.splice(randIdx, 1)[0]
+    let cardPicked2 = deck4.splice(randIdx, 1)[0]
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
 
@@ -67,8 +66,8 @@ function render(cardPicked1, cardPicked2) {
     deck3El.classList.remove('outline')
   }
   if (deck1.length > 1) {
-    deck2El.classList.remove(cardToRemove1)
-    deck4El.classList.remove(cardToRemove2)
+    deck1El.classList.remove(cardToRemove1)
+    deck3El.classList.remove(cardToRemove2)
   }
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
