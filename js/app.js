@@ -6,8 +6,25 @@ let deck4 = []
 let cardToRemove1
 let cardToRemove2
 
-const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
-const masterDeckValue = [14, 12, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14, 12, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14, 12, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 14, 12, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2]
+const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"];
+
+const masterDeckMap = {
+  "dA" : 14,   "hA" : 14,  "cA" : 14,  "sA" : 14,
+  "dQ" : 12,   "hQ" : 12,  "cQ" : 12,  "sQ" : 12,
+  "dK" : 13,   "hK" : 13,  "cK" : 13,  "sK" : 13,
+  "dJ" : 11,   "hJ" : 11,  "cJ" : 11,  "sJ" : 11,
+  "d10" : 10, "h10" : 10, "c10" : 10, "s10" : 10,
+  "d09" : 9,  "h09" : 9,  "c09" : 9,  "s09" : 9,
+  "d08" : 8,  "h08" : 8,  "c08" : 8,  "s08" : 8,
+  "d07" : 7,  "h07" : 7,  "c07" : 7,  "s07" : 7, 
+  "d06" : 6,  "h06" : 6,  "c06" : 6,  "s06" : 6,
+  "d05" : 5,  "h05" : 5,  "c05" : 5,  "s05" : 5,
+  "d04" : 4,  "h04" : 4,  "c04" : 4,  "s04" : 4,
+  "d03" : 3,  "h03" : 3,  "c03" : 3,  "s03" : 3,
+  "d02" : 2,  "h02" : 2,  "c02" : 2,  "s02" : 2
+  
+}
+// console.log(masterDeckMap) 
 
 // Cached element references
 let deck1El = document.getElementById('deck1')
@@ -55,9 +72,14 @@ function handleClick() {
     deck3.push(cardPicked2)
 
   render(cardPicked1, cardPicked2)
+  // cardPicked1()
   }
 }
-    
+
+// function cardPicked1() {
+//   let valueC1 = document.getElementById('deck1').textContent
+//   console.log('this is the value of c1', valueC1)
+// }
 
 // Function to render deck state
 function render(cardPicked1, cardPicked2) {
