@@ -71,9 +71,8 @@ function shuffle(array) {
 
 function handleClick() {
   if (deck2.length > 0 )  {
-    let randIdx = Math.floor(Math.random() * deck2.length)
-    let cardPicked1 = deck2.splice(randIdx, 1)[0]
-    let cardPicked2 = deck4.splice(randIdx, 1)[0]
+    let cardPicked1 = deck2.pop()
+    let cardPicked2 = deck4.pop()
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
 
@@ -85,30 +84,51 @@ function handleClick() {
 }
 
 function compareCards(cardPicked1, cardPicked2) {
+  if (masterDeckMap[cardPicked1] === masterDeckMap[cardPicked2]) {
+    handleTie()
+  }
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-    p1Deck.push(cardPicked2, cardPicked1)
+    // p1Deck.push(cardPicked2, cardPicked1)
+    p1Deck = [...p1Deck, ...deck3, ...deck1]
+    deck1 = []
+    deck3 = []
+    
     // text.innerText = "Player one wins this round"
   }  else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
-    p2Deck.push(cardPicked1, cardPicked2)
+    // p2Deck.push(cardPicked1, cardPicked2)
+    p2Deck = [...p2Deck, ...deck1, ...deck3]
+    deck1 = []
+    deck3 = []
   }
 }
 
+function handleTie() {
+  //pull 4 cards and compare 4th card
+  let p1War = deck2.splice(deck2.length -4, 4)
+  let p2War = deck4.splice(deck4.length -4, 4)
+  deck1.push(...p1War)
+  deck3.push(...p2War)
+  console.log(deck1, deck3)
+  compareCards(p1War[3], p2War[3])
+}
+
 function render(cardPicked1, cardPicked2) {
-  
-  if (deck1.length === 1) {
+  console.log(cardPicked1, cardPicked2)
+  // if (deck1.length >= 1) {
     deck1El.classList.remove('outline')
     deck3El.classList.remove('outline')
-  }
-  if (deck1.length > 1) {
+  // }
+  // if (deck1.length > 1) {
     deck1El.classList.remove(cardToRemove1)
     deck3El.classList.remove(cardToRemove2)
-  }
+  // }
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
   // console.log(cardPicked1)
   // console.log(cardPicked2)
   deck1El.classList.add(cardPicked1)
   deck3El.classList.add(cardPicked2)
+  
   
 	if (deck2.length === 13) {
     deck1El.classList.add('shadow')
@@ -126,8 +146,8 @@ function render(cardPicked1, cardPicked2) {
 }
 
 function renderBooks() {
-  console.log(p1Deck)
-  console.log(p2Deck)
+  console.log(p1Deck, 'player1')
+  console.log(p2Deck, 'player2')
   if (p1Deck.length === 0) {
     p1DeckEl.classList.add('outline')
     p1DeckEl.classList.remove('back-blue')
