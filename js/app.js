@@ -76,12 +76,13 @@ function handleClick() {
   }
 }
 
-// function cardPicked1() {
-//   let valueC1 = document.getElementById('deck1').textContent
-//   console.log('this is the value of c1', valueC1)
-// }
+function cardPicked1() {
+  let valueC1 = document.getElementById('deck1').textContent
+  console.log('this is the value of c1', valueC1)
+}
 
 // Function to render deck state
+
 function render(cardPicked1, cardPicked2) {
   console.log(cardPicked1, cardPicked2)
   if (deck1.length === 1) {
