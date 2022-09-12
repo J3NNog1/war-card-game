@@ -88,14 +88,13 @@ function compareCards(cardPicked1, cardPicked2) {
     handleTie()
   }
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-    // p1Deck.push(cardPicked2, cardPicked1)
+    
     p1Deck = [...p1Deck, ...deck3, ...deck1]
     deck1 = []
     deck3 = []
     
-    // text.innerText = "Player one wins this round"
+    
   }  else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
-    // p2Deck.push(cardPicked1, cardPicked2)
     p2Deck = [...p2Deck, ...deck1, ...deck3]
     deck1 = []
     deck3 = []
