@@ -25,10 +25,10 @@ const masterDeckMap = {
   "d05" : 5,  "h05" : 5,  "c05" : 5,  "s05" : 5,
   "d04" : 4,  "h04" : 4,  "c04" : 4,  "s04" : 4,
   "d03" : 3,  "h03" : 3,  "c03" : 3,  "s03" : 3,
-  "d02" : 2,  "h02" : 2,  "c02" : 2,  "s02" : 2
-  
+  "d02" : 2,  "h02" : 2,  "c02" : 2,  "s02" : 2,
+
 }
-// console.log(masterDeckMap) 
+// console.log(masterDeckMap["c06"]) 
 
 // Cached element references
 let deck1El = document.getElementById('deck1')
@@ -90,7 +90,15 @@ function handleClick() {
 // Function to render deck state
 
 function render(cardPicked1, cardPicked2) {
-  console.log(cardPicked1, cardPicked2)
+  if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
+    p1Deck.push(cardPicked1, cardPicked2)
+  }  else if (masterDeckMap[cardPicked1] < masterDeckMap[cardPicked2]) {
+    p2Deck.push(cardPicked1, cardPicked2)
+  }
+  console.log(deck2)
+  console.log(p2Deck)
+  console.log(p1Deck)
+
   if (deck1.length === 1) {
     deck1El.classList.remove('outline')
     deck3El.classList.remove('outline')
@@ -120,17 +128,9 @@ function render(cardPicked1, cardPicked2) {
   
 }
 
-function compareNum(num1, num2) {
-  if (num1 > num2) {
-    // text.innerText = "Player one wins this round"
-    p1Deck.push(num1, num2)
-  } else if (num2 > num1) {
-    p2Deck.push(num1, num2)
-    
-  }
-}
-compareNum(8, 3) 
-compareNum(2, 5) 
+
+// compareNum(8, 3) 
+// compareNum(2, 5) 
 console.log(p1Deck)
 console.log(p2Deck)
 
