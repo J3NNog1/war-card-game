@@ -123,8 +123,7 @@ function render(cardPicked1, cardPicked2) {
   // }
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
-  // console.log(cardPicked1)
-  // console.log(cardPicked2)
+  
   deck1El.classList.add(cardPicked1)
   deck3El.classList.add(cardPicked2)
   
@@ -161,9 +160,6 @@ function renderBooks() {
     p2DeckEl.className = `card large ${p2Deck.at(-1)}` 
   
   }
-  
-  
-  
   
 }
 
