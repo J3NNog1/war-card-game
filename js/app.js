@@ -35,7 +35,8 @@ let deck1El = document.getElementById('deck1')
 let deck2El = document.getElementById('deck2')
 let deck3El = document.getElementById('deck3')
 let deck4El = document.getElementById('deck4')
-
+let p1DeckEl = document.getElementById('p1Deck')
+let p2DeckEl = document.getElementById('p2Deck')
 
 console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
@@ -77,28 +78,23 @@ function handleClick() {
     deck3.push(cardPicked2)
 
     
+    compareCards(cardPicked1, cardPicked2)
     render(cardPicked1, cardPicked2)
     // cardPicked1()
   }
 }
 
-// function cardPicked1() {
-//   let valueC1 = document.getElementById('deck1').textContent
-//   console.log('this is the value of c1', valueC1)
-// }
-
-// Function to render deck state
-
-function render(cardPicked1, cardPicked2) {
+function compareCards(cardPicked1, cardPicked2) {
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-    p1Deck.push(cardPicked1, cardPicked2)
-  }  else if (masterDeckMap[cardPicked1] < masterDeckMap[cardPicked2]) {
+    p1Deck.push(cardPicked2, cardPicked1)
+    // text.innerText = "Player one wins this round"
+  }  else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
     p2Deck.push(cardPicked1, cardPicked2)
   }
-  console.log(deck2)
-  console.log(p2Deck)
-  console.log(p1Deck)
+}
 
+function render(cardPicked1, cardPicked2) {
+  
   if (deck1.length === 1) {
     deck1El.classList.remove('outline')
     deck3El.classList.remove('outline')
@@ -109,7 +105,8 @@ function render(cardPicked1, cardPicked2) {
   }
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
-  
+  // console.log(cardPicked1)
+  // console.log(cardPicked2)
   deck1El.classList.add(cardPicked1)
   deck3El.classList.add(cardPicked2)
   
@@ -125,14 +122,41 @@ function render(cardPicked1, cardPicked2) {
     deck2El.classList.remove('back-blue')
     deck4El.classList.remove('back-blue')
   }
-  
+  renderBooks()
 }
 
+function renderBooks() {
+  console.log(p1Deck)
+  console.log(p2Deck)
+  if (p1Deck.length === 0) {
+    p1DeckEl.classList.add('outline')
+    p1DeckEl.classList.remove('back-blue')
+  } else {
+    p1DeckEl.className = `card large ${p1Deck.at(-1)}` 
+    // p1DeckEl.classList.add(p1Deck.at(-1))
+    // p1DeckEl.classList.remove('outline')
+  }
+  if (p2Deck.length === 0) {
+    p2DeckEl.classList.add('outline')
+    p2DeckEl.classList.remove('back-blue')
+  } else {
+    p2DeckEl.className = `card large ${p2Deck.at(-1)}` 
+    // p2DeckEl.classList.add(p2Deck.at(-1))
+    // p2DeckEl.classList.remove('outline')
+  }
+  
+  
+  
+  
+}
+// function render() {
+//   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
+//     p1Deck.push(cardPicked1, cardPicked2)
+//   }
+// }
 
-// compareNum(8, 3) 
-// compareNum(2, 5) 
-console.log(p1Deck)
-console.log(p2Deck)
+// console.log(p1Deck)
+// console.log(p2Deck)
 
 // if(isRoundWinner(deck1, deck3)) {
 // } else if (isRoundWinner(deck3, deck1)) {
