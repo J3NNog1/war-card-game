@@ -153,16 +153,14 @@ function renderBooks() {
     p1DeckEl.classList.remove('back-blue')
   } else {
     p1DeckEl.className = `card large ${p1Deck.at(-1)}` 
-    // p1DeckEl.classList.add(p1Deck.at(-1))
-    // p1DeckEl.classList.remove('outline')
+    
   }
   if (p2Deck.length === 0) {
     p2DeckEl.classList.add('outline')
     p2DeckEl.classList.remove('back-blue')
   } else {
     p2DeckEl.className = `card large ${p2Deck.at(-1)}` 
-    // p2DeckEl.classList.add(p2Deck.at(-1))
-    // p2DeckEl.classList.remove('outline')
+  
   }
   
   
