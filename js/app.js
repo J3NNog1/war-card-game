@@ -5,6 +5,10 @@ let deck3 = []
 let deck4 = []
 let cardToRemove1
 let cardToRemove2
+let p1Deck = []
+let p2Deck = []
+
+
 
 const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"];
 
@@ -50,6 +54,7 @@ function init() {
   deck4 = shuffledDeck.slice(26)
 }
 
+// fischer-yates shuffle
 function shuffle(array) {
   let j, x, i;
   for (i = array.length - 1; i > 0; i--) {
@@ -71,15 +76,16 @@ function handleClick() {
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
 
-  render(cardPicked1, cardPicked2)
-  // cardPicked1()
+    
+    render(cardPicked1, cardPicked2)
+    // cardPicked1()
   }
 }
 
-function cardPicked1() {
-  let valueC1 = document.getElementById('deck1').textContent
-  console.log('this is the value of c1', valueC1)
-}
+// function cardPicked1() {
+//   let valueC1 = document.getElementById('deck1').textContent
+//   console.log('this is the value of c1', valueC1)
+// }
 
 // Function to render deck state
 
@@ -98,7 +104,7 @@ function render(cardPicked1, cardPicked2) {
   
   deck1El.classList.add(cardPicked1)
   deck3El.classList.add(cardPicked2)
-
+  
 	if (deck2.length === 13) {
     deck1El.classList.add('shadow')
     deck3El.classList.add('shadow')
@@ -113,4 +119,27 @@ function render(cardPicked1, cardPicked2) {
   }
   
 }
+
+function compareNum(num1, num2) {
+  if (num1 > num2) {
+    // text.innerText = "Player one wins this round"
+    p1Deck.push(num1, num2)
+  } else if (num2 > num1) {
+    p2Deck.push(num1, num2)
+    
+  }
+}
+compareNum(8, 3) 
+compareNum(2, 5) 
+console.log(p1Deck)
+console.log(p2Deck)
+
+// if(isRoundWinner(deck1, deck3)) {
+// } else if (isRoundWinner(deck3, deck1)) {
+//   text.innerText = "Player one wins this round"
+//   deck1.push(p1Deck)
+//   deck3.push(p2Deck)
+// }
+// console.log(deck1, deck2)
+// }
 
