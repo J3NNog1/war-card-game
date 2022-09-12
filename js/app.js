@@ -169,21 +169,6 @@ function renderBooks() {
   
   
 }
-// function render() {
-//   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-//     p1Deck.push(cardPicked1, cardPicked2)
-//   }
-// }
 
-// console.log(p1Deck)
-// console.log(p2Deck)
 
-// if(isRoundWinner(deck1, deck3)) {
-// } else if (isRoundWinner(deck3, deck1)) {
-//   text.innerText = "Player one wins this round"
-//   deck1.push(p1Deck)
-//   deck3.push(p2Deck)
-// }
-// console.log(deck1, deck2)
-// }
 
