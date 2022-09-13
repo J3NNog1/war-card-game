@@ -120,7 +120,7 @@ function render(cardPicked1, cardPicked2) {
   // if (deck1.length > 1) {
     deck1El.classList.remove(cardToRemove1)
     deck3El.classList.remove(cardToRemove2)
-  // }
+  
   cardToRemove1 = cardPicked1
   cardToRemove2 = cardPicked2
   
@@ -144,8 +144,6 @@ function render(cardPicked1, cardPicked2) {
 }
 
 function renderBooks() {
-  console.log(p1Deck, 'player1')
-  console.log(p2Deck, 'player2')
   if (p1Deck.length === 0) {
     p1DeckEl.classList.add('outline')
     p1DeckEl.classList.remove('back-blue')
