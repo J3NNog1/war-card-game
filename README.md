@@ -32,4 +32,19 @@
 
 > HTML
 
+> git
+
+### Credits
+
+> Help from GA's Engineering channel
+
+> Ben's lecture on CSS Card Starter lecture
+
+> Fisher Yates Shuffle
+
+> Used coolors.com for CSS color pattern
+
+>Spread operator from mdn.com
+
+
 
