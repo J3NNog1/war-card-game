@@ -10,3 +10,7 @@
 > When both players get a tie they go into WAR!
 > War means that both players have to leave their cards down that are tied and pull 3 cards from their pile, keep them faced down and the 4th card is faced up, and whos ever is the highest wins that war!
 > Sometimes you can get single war, double war and in rare cases triple war!
+
+## Play me ==>
+
+### ![game link](https://github.com/J3NNog1/war-card-game.git)
