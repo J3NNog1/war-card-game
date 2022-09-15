@@ -6,7 +6,7 @@
 ## Play me ==>
 
 
-[game link](https://github.com/J3NNog1/war-card-game.git)
+### [Game link](https://github.com/J3NNog1/war-card-game.git)
 
 ### Screenshot Below ==>
 
