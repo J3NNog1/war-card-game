@@ -58,6 +58,6 @@
 
 - [ ] Add shuffle animation
 
-> Add Confetti 
+- [ ] Add Confetti 
 
 
