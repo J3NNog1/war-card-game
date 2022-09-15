@@ -6,7 +6,7 @@
 ## Play me ==>
 
 
-### [Game link](https://github.com/J3NNog1/war-card-game.git)
+### [Game link](https://war-card-game-1.netlify.app)
 
 ### Screenshot Below ==>
 
@@ -56,5 +56,8 @@
 
 > Use two different key binds for player 1 & player2
 
+> Add shuffle animation
+
 > Add Confetti 
+
 
