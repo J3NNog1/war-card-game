@@ -39,7 +39,7 @@
 ### Planning Materials
 
 > Used Whimsical to create my wireframe and pseudocode
-[Planning Materials](https://whimsical.com/war-card-game-GqkEcfnvnfF7mhn3f1FjQe)
+>[Planning Materials](https://whimsical.com/war-card-game-GqkEcfnvnfF7mhn3f1FjQe)
 
 ### Credits
 
