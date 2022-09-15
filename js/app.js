@@ -37,8 +37,8 @@ let deck3El = document.getElementById('deck3')
 let deck4El = document.getElementById('deck4')
 let p1DeckEl = document.getElementById('p1Deck')
 let p2DeckEl = document.getElementById('p2Deck')
+const favicon = document.querySelector("#favicon")
 
-console.log(deck1El, deck2El, deck3El, deck4El)
 // Event listeners
 
 document.getElementById('btn-1').addEventListener('click', ()=> handleClick())

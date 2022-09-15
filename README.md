@@ -10,9 +10,9 @@
 
 ### Screenshot Below ==>
 
-![screenshot](https://github.com/J3NNog1/war-card-game/blob/main/assests/Screen%20Shot%202022-09-15%20at%2010.48.11%20AM%20(2).png)
+![screenshot](https://github.com/J3NNog1/war-card-game/blob/main/assets/Screen%20Shot%202022-09-15%20at%2010.48.11%20AM%20(2).png)
 
-![screenshot2](https://github.com/J3NNog1/war-card-game/blob/main/assests/Screen%20Shot%202022-09-15%20at%2011.09.19%20AM%20(2).png)
+![screenshot2](https://github.com/J3NNog1/war-card-game/blob/main/assets/Screen%20Shot%202022-09-15%20at%2011.09.19%20AM%20(2).png)
 
 ### How to
 
