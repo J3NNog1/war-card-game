@@ -36,6 +36,11 @@
 
 > git
 
+### Planning Materials
+
+> Used Whimsical to create my wireframe and pseudocode
+[Planning Materials](https://whimsical.com/war-card-game-GqkEcfnvnfF7mhn3f1FjQe)
+
 ### Credits
 
 > Help from GA's Engineering channel
