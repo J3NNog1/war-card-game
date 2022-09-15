@@ -48,15 +48,15 @@
 
 ### Ice Box 
 
-> Add functionality where player can see where their war cards are 
+-[ ] Add functionality where player can see where their war cards are 
 
-> Dark mode
+-[ ] Dark mode
 
-> Add a timer
+-[ ] Add a timer
 
-> Use two different key binds for player 1 & player2
+-[ ] Use two different key binds for player 1 & player2
 
-> Add shuffle animation
+-[ ] Add shuffle animation
 
 > Add Confetti 
 
