@@ -81,6 +81,12 @@ function handleClick() {
     render(cardPicked1, cardPicked2)
     // cardPicked1()
   }
+  //what is our end game... if the end is 0 something is goign to happen 
+  // } if (deck2.length === 0) {
+  //   deck2 = p1Deck 
+  // } if (deck4.length === 0) {
+  //   deck4 = p2Deck 
+  // } console.log(deck2, deck4)
 }
 
 function compareCards(cardPicked1, cardPicked2) {
