@@ -1,12 +1,12 @@
 # WAR CARD GAME 
 
 
+## Play me ==>
+### [War Game](https://war-card-game-1.netlify.app)
 
 ## Get Started 
-## Play me ==>
 
 
-### [War Game](https://war-card-game-1.netlify.app)
 
 ### Screenshot Below ==>
 
