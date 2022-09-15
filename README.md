@@ -6,7 +6,7 @@
 ## Play me ==>
 
 
-### [Game link](https://war-card-game-1.netlify.app)
+### [War Game](https://war-card-game-1.netlify.app)
 
 ### Screenshot Below ==>
 
