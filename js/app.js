@@ -28,7 +28,6 @@ const masterDeckMap = {
   "d02" : 2,  "h02" : 2,  "c02" : 2,  "s02" : 2,
 
 }
-// console.log(masterDeckMap["c06"]) 
 
 // Cached element references
 let deck1El = document.getElementById('deck1')
@@ -79,14 +78,9 @@ function handleClick() {
     
     compareCards(cardPicked1, cardPicked2)
     render(cardPicked1, cardPicked2)
-    // cardPicked1()
+    
   }
-  //what is our end game... if the end is 0 something is goign to happen 
-  // } if (deck2.length === 0) {
-  //   deck2 = p1Deck 
-  // } if (deck4.length === 0) {
-  //   deck4 = p2Deck 
-  // } console.log(deck2, deck4)
+  
 }
 
 function compareCards(cardPicked1, cardPicked2) {
@@ -119,11 +113,10 @@ function handleTie() {
 
 function render(cardPicked1, cardPicked2) {
   console.log(cardPicked1, cardPicked2)
-  // if (deck1.length >= 1) {
+  
     deck1El.classList.remove('outline')
     deck3El.classList.remove('outline')
-  // }
-  // if (deck1.length > 1) {
+  
     deck1El.classList.remove(cardToRemove1)
     deck3El.classList.remove(cardToRemove2)
   
