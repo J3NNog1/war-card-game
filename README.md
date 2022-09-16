@@ -61,7 +61,7 @@
 
 - [ ] Add a timer
 
-- [ ] Use two different key binds for player 1 & player2
+- [ ] Use two different key binds for player 1 & player 2
 
 - [ ] Add shuffle animation
 
