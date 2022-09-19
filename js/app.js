@@ -36,7 +36,8 @@ let deck3El = document.getElementById('deck3')
 let deck4El = document.getElementById('deck4')
 let p1DeckEl = document.getElementById('p1Deck')
 let p2DeckEl = document.getElementById('p2Deck')
-const favicon = document.querySelector("#favicon")
+let player1cards = document.querySelector(".player1cards")
+let player2cards= document.querySelector(".player2cards")
 
 // Event listeners
 
@@ -52,6 +53,9 @@ function init() {
   const shuffledDeck = shuffle([...masterDeck])
   deck2 = shuffledDeck.slice(0, 26)
   deck4 = shuffledDeck.slice(26)
+  player1cards.textContent = "26"
+  player2cards.textContent = "26"
+
 }
 
 // fischer-yates shuffle
@@ -74,8 +78,8 @@ function handleClick() {
     let cardPicked2 = deck4.pop()
     deck1.push(cardPicked1)
     deck3.push(cardPicked2)
-
-    
+    player1cards.textContent = deck2.length + p1Deck.length
+    player2cards.textContent = deck4.length + p2Deck.length
     compareCards(cardPicked1, cardPicked2)
     render(cardPicked1, cardPicked2)
     
@@ -92,8 +96,6 @@ function compareCards(cardPicked1, cardPicked2) {
     p1Deck = [...p1Deck, ...deck3, ...deck1]
     deck1 = []
     deck3 = []
-    
-    
   }  else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
     p2Deck = [...p2Deck, ...deck1, ...deck3]
     deck1 = []

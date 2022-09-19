@@ -12,12 +12,21 @@
 	<title>War Card Game</title>
 </head>
 <h1><strong>War Card Game!</strong></h1>
+
 <body>
 	<div class="container">
+		<div id="player1score" class="card-count">
+			<h3>Player 1 Cards</h3>
+			<h4 class="player1cards"></h4>
+		</div>
 		<div id="deck2" class="card large back-red shadow"></div>
     <div id="deck1" class="card large outline"></div>
     <div id="deck3" class="card large outline"></div>
 		<div id="deck4" class="card large back-red shadow"></div>
+		<div id="player2score" class="card-count">
+			<h3>Player 2 Cards</h3>
+			<h4 class="player2cards"></h4>
+		</div>
 	</div>
   <div>
     <div id="p1Deck" class="card large outline"></div>
@@ -25,6 +34,7 @@
   </div>
 	<button id="btn-1" class="btn">Flip Card</button>
   <button onClick="window.location.reload();" class="btn">Reset</button>
+
   
 </body>
 </html>
