@@ -1,14 +1,12 @@
 // Declare deck variables
-let deck1 = []
-let deck2 = []
-let deck3 = []
-let deck4 = []
-let cardToRemove1
-let cardToRemove2
-let p1Deck = []
-let p2Deck = []
-
-
+let deck1 = [];
+let deck2 = [];
+let deck3 = [];
+let deck4 = [];
+let cardToRemove1;
+let cardToRemove2;
+let p1Deck = [];
+let p2Deck = [];
 
 const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"];
 
@@ -30,137 +28,137 @@ const masterDeckMap = {
 }
 
 // Cached element references
-let deck1El = document.getElementById('deck1')
-let deck2El = document.getElementById('deck2')
-let deck3El = document.getElementById('deck3')
-let deck4El = document.getElementById('deck4')
-let p1DeckEl = document.getElementById('p1Deck')
-let p2DeckEl = document.getElementById('p2Deck')
-let player1cards = document.querySelector(".player1cards")
-let player2cards= document.querySelector(".player2cards")
+let deck1El = document.getElementById("deck1");
+let deck2El = document.getElementById("deck2");
+let deck3El = document.getElementById("deck3");
+let deck4El = document.getElementById("deck4");
+let p1DeckEl = document.getElementById("p1Deck");
+let p2DeckEl = document.getElementById("p2Deck");
+let player1cards = document.querySelector(".player1cards");
+let player2cards = document.querySelector(".player2cards");
+let winMessage = document.getElementById("win-message");
 
 // Event listeners
 
-document.getElementById('btn-1').addEventListener('click', ()=> handleClick())
-
+document.getElementById("btn-1").addEventListener("click", () => handleClick());
 
 // Functions
 
-init()
-
+init();
 
 function init() {
-  const shuffledDeck = shuffle([...masterDeck])
-  deck2 = shuffledDeck.slice(0, 26)
-  deck4 = shuffledDeck.slice(26)
-  player1cards.textContent = "26"
-  player2cards.textContent = "26"
-
+  const shuffledDeck = shuffle([...masterDeck]);
+  deck2 = shuffledDeck.slice(0, 26);
+  deck4 = shuffledDeck.slice(26);
+  player1cards.textContent = "26";
+  player2cards.textContent = "26";
 }
 
 // fischer-yates shuffle
 function shuffle(array) {
   let j, x, i;
   for (i = array.length - 1; i > 0; i--) {
-      j = Math.floor(Math.random() * (i + 1));
-      x = array[i];
-      array[i] = array[j];
-      array[j] = x;
+    j = Math.floor(Math.random() * (i + 1));
+    x = array[i];
+    array[i] = array[j];
+    array[j] = x;
   }
-  return array
+  return array;
 }
 
 // Function to handle a button click:
 
 function handleClick() {
-  if (deck2.length > 0 )  {
-    let cardPicked1 = deck2.pop()
-    let cardPicked2 = deck4.pop()
-    deck1.push(cardPicked1)
-    deck3.push(cardPicked2)
-    player1cards.textContent = deck2.length + p1Deck.length
-    player2cards.textContent = deck4.length + p2Deck.length
-    compareCards(cardPicked1, cardPicked2)
-    render(cardPicked1, cardPicked2)
-    
+  if (deck2.length > 0) {
+    let cardPicked1 = deck2.pop();
+    let cardPicked2 = deck4.pop();
+    deck1.push(cardPicked1);
+    deck3.push(cardPicked2);
+    player1cards.textContent = deck2.length + p1Deck.length;
+    player2cards.textContent = deck4.length + p2Deck.length;
+    compareCards(cardPicked1, cardPicked2);
+    render(cardPicked1, cardPicked2);
   }
-  
 }
 
 function compareCards(cardPicked1, cardPicked2) {
   if (masterDeckMap[cardPicked1] === masterDeckMap[cardPicked2]) {
-    handleTie()
+    handleTie();
+    winMessage.textContent = "It's a tie, that means War!"
   }
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-    
-    p1Deck = [...p1Deck, ...deck3, ...deck1]
-    deck1 = []
-    deck3 = []
-  }  else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
-    p2Deck = [...p2Deck, ...deck1, ...deck3]
-    deck1 = []
-    deck3 = []
+    p1Deck = [...p1Deck, ...deck3, ...deck1];
+    deck1 = [];
+    deck3 = [];
+    winMessage.textContent = "Player 1 has won this hand!"
+  } else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
+    p2Deck = [...p2Deck, ...deck1, ...deck3];
+    deck1 = [];
+    deck3 = [];
+    winMessage.textContent = "Player 2 has won this hand!"
   }
 }
 
 function handleTie() {
   //pull 4 cards and compare 4th card
-  let p1War = deck2.splice(deck2.length -4, 4)
-  let p2War = deck4.splice(deck4.length -4, 4)
-  deck1.push(...p1War)
-  deck3.push(...p2War)
-  console.log(deck1, deck3)
-  compareCards(p1War[3], p2War[3])
+  let p1War = deck2.splice(deck2.length - 4, 4);
+  let p2War = deck4.splice(deck4.length - 4, 4);
+  deck1.push(...p1War);
+  deck3.push(...p2War);
+  console.log(deck1, deck3);
+  compareCards(p1War[3], p2War[3]);
 }
 
 function render(cardPicked1, cardPicked2) {
-  console.log(cardPicked1, cardPicked2)
-  
-    deck1El.classList.remove('outline')
-    deck3El.classList.remove('outline')
-  
-    deck1El.classList.remove(cardToRemove1)
-    deck3El.classList.remove(cardToRemove2)
-  
-  cardToRemove1 = cardPicked1
-  cardToRemove2 = cardPicked2
-  
-  deck1El.classList.add(cardPicked1)
-  deck3El.classList.add(cardPicked2)
-  
-  
-	if (deck2.length === 13) {
-    deck1El.classList.add('shadow')
-    deck3El.classList.add('shadow')
-    deck2El.classList.remove('shadow')
-    deck4El.classList.remove('shadow')
+  console.log(cardPicked1, cardPicked2);
+
+  deck1El.classList.remove("outline");
+  deck3El.classList.remove("outline");
+
+  deck1El.classList.remove(cardToRemove1);
+  deck3El.classList.remove(cardToRemove2);
+
+  cardToRemove1 = cardPicked1;
+  cardToRemove2 = cardPicked2;
+
+  deck1El.classList.add(cardPicked1);
+  deck3El.classList.add(cardPicked2);
+
+  if (deck2.length === 13) {
+    deck1El.classList.add("shadow");
+    deck3El.classList.add("shadow");
+    deck2El.classList.remove("shadow");
+    deck4El.classList.remove("shadow");
   }
   if (deck2.length === 0) {
-    deck2El.classList.add('outline')
-    deck4El.classList.add('outline')
-    deck2El.classList.remove('back-blue')
-    deck4El.classList.remove('back-blue')
+    deck2El.classList.add("outline");
+    deck4El.classList.add("outline");
+    deck2El.classList.remove("back-blue");
+    deck4El.classList.remove("back-blue");
   }
-  renderBooks()
+  renderBooks();
 }
 
 function renderBooks() {
   if (p1Deck.length === 0) {
-    p1DeckEl.classList.add('outline')
-    p1DeckEl.classList.remove('back-blue')
+    p1DeckEl.classList.add("outline");
+    p1DeckEl.classList.remove("back-blue");
   } else {
-    p1DeckEl.className = `card large ${p1Deck.at(-1)}` 
-    
+    p1DeckEl.className = `card large ${p1Deck.at(-1)}`;
   }
   if (p2Deck.length === 0) {
-    p2DeckEl.classList.add('outline')
-    p2DeckEl.classList.remove('back-blue')
+    p2DeckEl.classList.add("outline");
+    p2DeckEl.classList.remove("back-blue");
   } else {
-    p2DeckEl.className = `card large ${p2Deck.at(-1)}` 
-  
+    p2DeckEl.className = `card large ${p2Deck.at(-1)}`;
   }
-  
 }
 
-
-
+function getWinner() {
+  if (deck2.length + p1Deck.length === 52) {
+    //winMessage.textContent = "Congratulations Player 1 has Won the Game"
+  }
+  if (deck4.length + p2Deck.length === 52) {
+    //winMessage.textContent = "Congratulations Player 2 has Won the Game"
+  }
+}
