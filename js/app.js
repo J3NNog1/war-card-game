@@ -80,10 +80,8 @@ function handleClick() {
   p2DeckEl.style.backgroundColor = "#c3c3c380"
   if (deck2.length > 0) {
     let cardPicked1 = deck2.pop();
-    // deck2.pop();
     console.log(deck2.length, 'deck2');
     let cardPicked2 = deck4.pop();
-    // deck4.pop();
     console.log(deck4.length, 'deck4');
     deck1.push(cardPicked1);
     deck3.push(cardPicked2);
@@ -115,13 +113,10 @@ function compareCards(cardPicked1, cardPicked2) {
 
 function handleTie(cardPicked1, cardPicked2) {
   console.log(cardPicked1, cardPicked2, "look here")
-  //pull 4 cards and compare 4th card
   console.log(deck2.length)
   p1War = deck2.splice(deck2.length - 4, 4);
-  // deck2.splice(deck2.length - 4, 4);
   console.log(deck2.length, "Second length")
   p2War = deck4.splice(deck4.length - 4, 4);
-  // deck4.splice(deck4.length - 4, 4);
   deck1.push(...p1War);
   deck3.push(...p2War);
   console.log(p1War, p2War)
