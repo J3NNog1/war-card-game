@@ -7,8 +7,8 @@ let cardToRemove1;
 let cardToRemove2;
 let p1Deck = [];
 let p2Deck = [];
-let p1War
-let p2War
+let p1War = [];
+let p2War = [];
 
 
 const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"];
@@ -59,7 +59,7 @@ function init() {
   
 }
 
-// fischer-yates shuffle
+// Fischer-yates shuffle
 function shuffle(array) {
   let j, x, i;
   for (i = array.length - 1; i > 0; i--) {
@@ -74,9 +74,17 @@ function shuffle(array) {
 // Function to handle a button click:
 
 function handleClick() {
+  p1DeckEl.classList.remove(...p1DeckEl.classList);
+  p2DeckEl.classList.remove(...p2DeckEl.classList);
+  p1DeckEl.style.backgroundColor = "#c3c3c380"
+  p2DeckEl.style.backgroundColor = "#c3c3c380"
   if (deck2.length > 0) {
     let cardPicked1 = deck2.pop();
+    // deck2.pop();
+    console.log(deck2.length, 'deck2');
     let cardPicked2 = deck4.pop();
+    // deck4.pop();
+    console.log(deck4.length, 'deck4');
     deck1.push(cardPicked1);
     deck3.push(cardPicked2);
     compareCards(cardPicked1, cardPicked2);
@@ -84,47 +92,79 @@ function handleClick() {
     player1cards.textContent = deck2.length 
     player2cards.textContent = deck4.length 
   }
+  getWinner()
 }
 
 function compareCards(cardPicked1, cardPicked2) {
-  // console.log(masterDeckMap[cardPicked1], masterDeckMap[cardPicked2])
   if (masterDeckMap[cardPicked1] === masterDeckMap[cardPicked2]) {
-    handleTie();
+    handleTie(cardPicked1, cardPicked2);
     winMessage.textContent = "It's a tie, that means War!"
   }
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
     deck2.unshift(cardPicked1, cardPicked2)
-    // = [...deck2, cardPicked1, cardPicked2];
     deck1 = [];
     deck3 = [];
     winMessage.textContent = "Player 1 has won this hand!"
   } else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
     deck4.unshift(cardPicked1, cardPicked2)
-    // deck4 = [...deck4, cardPicked2, cardPicked1];
     deck1 = [];
     deck3 = [];
     winMessage.textContent = "Player 2 has won this hand!"
   }
-  console.log(deck4, deck2);
-  renderBooks();
 } 
 
-function handleTie() {
+function handleTie(cardPicked1, cardPicked2) {
+  console.log(cardPicked1, cardPicked2, "look here")
   //pull 4 cards and compare 4th card
+  console.log(deck2.length)
   p1War = deck2.splice(deck2.length - 4, 4);
+  // deck2.splice(deck2.length - 4, 4);
+  console.log(deck2.length, "Second length")
   p2War = deck4.splice(deck4.length - 4, 4);
+  // deck4.splice(deck4.length - 4, 4);
   deck1.push(...p1War);
   deck3.push(...p2War);
-  // console.log(deck1, deck3);
-  compareCards(p1War[3], p2War[3]);
-  // console.log(card1, card2)
+  console.log(p1War, p2War)
+  if (masterDeckMap[p1War.at(-1)] === masterDeckMap[p2War.at(-1)]){
+    handleTie()
+    winMessage.textContent = "It's a tie, that means War... again!"
+  }
+  if (masterDeckMap[p1War.at(-1)] > masterDeckMap[p2War.at(-1)]){
+    deck2.unshift(...p1War, ...p2War)
+    if(cardPicked1 !== undefined) {
+      deck2.unshift(cardPicked1, cardPicked2)
+    }
+    p1Deck = []
+    p2Deck = []
+    deck1 = []
+    deck3 = []
+    cardPicked1 = ""
+    cardPicked2 = ""
+    winMessage.textContent = "Player 1 has won this War!"
+  }
+  if (masterDeckMap[p1War.at(-1)] < masterDeckMap[p2War.at(-1)]){
+    deck4.unshift(...p1War, ...p2War)
+    if(cardPicked2 !== undefined) {
+      deck4.unshift(cardPicked1, cardPicked2)
+    }
+    p1Deck = []
+    p2Deck = []
+    deck1 = []
+    deck3 = []
+    cardPicked1 = ""
+    cardPicked2 = ""
+    winMessage.textContent = "Player 2 has won this War!"
+  }
+  p1DeckEl.classList.add(p1War.at(-1))
+  p2DeckEl.classList.add(p2War.at(-1))
+  p1DeckEl.style.backgroundColor = "white"
+  p2DeckEl.style.backgroundColor = "white"
+  console.log(deck2.length)
 }
 
 
 
 function render(cardPicked1, cardPicked2) {
-  // console.log(cardPicked1, cardPicked2);
-
   deck1El.classList.remove("outline");
   deck3El.classList.remove("outline");
 
@@ -137,6 +177,13 @@ function render(cardPicked1, cardPicked2) {
   deck1El.classList.add(cardPicked1);
   deck3El.classList.add(cardPicked2);
 
+  p1DeckEl.classList.add("outline")
+  p2DeckEl.classList.add("outline")
+  p1DeckEl.classList.add("large")
+  p2DeckEl.classList.add("large")
+  p1DeckEl.classList.add("card")
+  p2DeckEl.classList.add("card")
+  
   if (deck2.length === 13) {
     deck1El.classList.add("shadow");
     deck3El.classList.add("shadow");
@@ -168,10 +215,23 @@ function renderBooks() {
 }
 
 function getWinner() {
-  if (deck2.length + p1Deck.length === 52) {
-    //winMessage.textContent = "Congratulations Player 1 has Won the Game"
+  if (deck2.length === 52 || deck4.length === 0) {
+    winMessage.textContent = "Congratulations Player 1 has Won the Game"
   }
-  if (deck4.length + p2Deck.length === 52) {
-    //winMessage.textContent = "Congratulations Player 2 has Won the Game"
+  if (deck4.length === 52 || deck2.length === 0) {
+    winMessage.textContent = "Congratulations Player 2 has Won the Game"
   }
 }
+
+
+//*** DONE display the war cards
+//*** DONE render my win message
+//*** DONE make a condition if player runs out of cards they lose
+
+
+
+
+
+
+
+
