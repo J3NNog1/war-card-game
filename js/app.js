@@ -10,9 +10,7 @@ let p2Deck = [];
 let p1War = [];
 let p2War = [];
 
-
 const masterDeck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"];
-
 
 const masterDeckMap = {
   "dA" : 14,   "hA" : 14,  "cA" : 14,  "sA" : 14,
@@ -56,7 +54,6 @@ function init() {
   deck4 = shuffledDeck.slice(26);
   player1cards.textContent = "26";
   player2cards.textContent = "26";
-  
 }
 
 // Fischer-yates shuffle
@@ -76,88 +73,82 @@ function shuffle(array) {
 function handleClick() {
   p1DeckEl.classList.remove(...p1DeckEl.classList);
   p2DeckEl.classList.remove(...p2DeckEl.classList);
-  p1DeckEl.style.backgroundColor = "#c3c3c380"
-  p2DeckEl.style.backgroundColor = "#c3c3c380"
+  p1DeckEl.style.backgroundColor = "#c3c3c380";
+  p2DeckEl.style.backgroundColor = "#c3c3c380";
   if (deck2.length > 0) {
     let cardPicked1 = deck2.pop();
-    console.log(deck2.length, 'deck2');
+    console.log(deck2.length, "deck2");
     let cardPicked2 = deck4.pop();
-    console.log(deck4.length, 'deck4');
+    console.log(deck4.length, "deck4");
     deck1.push(cardPicked1);
     deck3.push(cardPicked2);
     compareCards(cardPicked1, cardPicked2);
     render(cardPicked1, cardPicked2);
-    player1cards.textContent = deck2.length 
-    player2cards.textContent = deck4.length 
+    player1cards.textContent = deck2.length;
+    player2cards.textContent = deck4.length;
   }
-  getWinner()
+  getWinner();
 }
 
 function compareCards(cardPicked1, cardPicked2) {
   if (masterDeckMap[cardPicked1] === masterDeckMap[cardPicked2]) {
     handleTie(cardPicked1, cardPicked2);
-    winMessage.textContent = "It's a tie, that means War!"
+    winMessage.textContent = "It's a tie, that means War!";
   }
   if (masterDeckMap[cardPicked1] > masterDeckMap[cardPicked2]) {
-    deck2.unshift(cardPicked1, cardPicked2)
+    deck2.unshift(cardPicked1, cardPicked2);
     deck1 = [];
     deck3 = [];
-    winMessage.textContent = "Player 1 has won this hand!"
+    winMessage.textContent = "Player 1 has won this hand!";
   } else if (masterDeckMap[cardPicked2] > masterDeckMap[cardPicked1]) {
-    deck4.unshift(cardPicked1, cardPicked2)
+    deck4.unshift(cardPicked1, cardPicked2);
     deck1 = [];
     deck3 = [];
-    winMessage.textContent = "Player 2 has won this hand!"
+    winMessage.textContent = "Player 2 has won this hand!";
   }
-} 
+}
 
 function handleTie(cardPicked1, cardPicked2) {
-  console.log(cardPicked1, cardPicked2, "look here")
-  console.log(deck2.length)
   p1War = deck2.splice(deck2.length - 4, 4);
-  console.log(deck2.length, "Second length")
   p2War = deck4.splice(deck4.length - 4, 4);
   deck1.push(...p1War);
   deck3.push(...p2War);
-  console.log(p1War, p2War)
-  if (masterDeckMap[p1War.at(-1)] === masterDeckMap[p2War.at(-1)]){
-    handleTie()
-    winMessage.textContent = "It's a tie, that means War... again!"
+  if (masterDeckMap[p1War.at(-1)] === masterDeckMap[p2War.at(-1)]) {
+    handleTie();
+    winMessage.textContent = "It's a tie, that means War... again!";
   }
-  if (masterDeckMap[p1War.at(-1)] > masterDeckMap[p2War.at(-1)]){
-    deck2.unshift(...p1War, ...p2War)
-    if(cardPicked1 !== undefined) {
-      deck2.unshift(cardPicked1, cardPicked2)
+  if (masterDeckMap[p1War.at(-1)] > masterDeckMap[p2War.at(-1)]) {
+    deck2.unshift(...p1War, ...p2War);
+    if (cardPicked1 !== undefined) {
+      deck2.unshift(cardPicked1, cardPicked2);
     }
-    p1Deck = []
-    p2Deck = []
-    deck1 = []
-    deck3 = []
-    cardPicked1 = ""
-    cardPicked2 = ""
-    winMessage.textContent = "Player 1 has won this War!"
+    p1Deck = [];
+    p2Deck = [];
+    deck1 = [];
+    deck3 = [];
+    cardPicked1 = "";
+    cardPicked2 = "";
+    winMessage.textContent = "Player 1 has won this War!";
   }
-  if (masterDeckMap[p1War.at(-1)] < masterDeckMap[p2War.at(-1)]){
-    deck4.unshift(...p1War, ...p2War)
-    if(cardPicked2 !== undefined) {
-      deck4.unshift(cardPicked1, cardPicked2)
+  if (masterDeckMap[p1War.at(-1)] < masterDeckMap[p2War.at(-1)]) {
+    deck4.unshift(...p1War, ...p2War);
+    if (cardPicked2 !== undefined) {
+      deck4.unshift(cardPicked1, cardPicked2);
     }
-    p1Deck = []
-    p2Deck = []
-    deck1 = []
-    deck3 = []
-    cardPicked1 = ""
-    cardPicked2 = ""
-    winMessage.textContent = "Player 2 has won this War!"
+    p1Deck = [];
+    p2Deck = [];
+    deck1 = [];
+    deck3 = [];
+    cardPicked1 = "";
+    cardPicked2 = "";
+    winMessage.textContent = "Player 2 has won this War!";
   }
-  p1DeckEl.classList.add(p1War.at(-1))
-  p2DeckEl.classList.add(p2War.at(-1))
-  p1DeckEl.style.backgroundColor = "white"
-  p2DeckEl.style.backgroundColor = "white"
-  console.log(deck2.length)
+  p1DeckEl.classList.add(p1War.at(-1));
+  p2DeckEl.classList.add(p2War.at(-1));
+  p1DeckEl.style.backgroundColor = "white";
+  p2DeckEl.style.backgroundColor = "white";
+  console.log(deck2.length);
 }
-
-
 
 function render(cardPicked1, cardPicked2) {
   deck1El.classList.remove("outline");
@@ -172,13 +163,13 @@ function render(cardPicked1, cardPicked2) {
   deck1El.classList.add(cardPicked1);
   deck3El.classList.add(cardPicked2);
 
-  p1DeckEl.classList.add("outline")
-  p2DeckEl.classList.add("outline")
-  p1DeckEl.classList.add("large")
-  p2DeckEl.classList.add("large")
-  p1DeckEl.classList.add("card")
-  p2DeckEl.classList.add("card")
-  
+  p1DeckEl.classList.add("outline");
+  p2DeckEl.classList.add("outline");
+  p1DeckEl.classList.add("large");
+  p2DeckEl.classList.add("large");
+  p1DeckEl.classList.add("card");
+  p2DeckEl.classList.add("card");
+
   if (deck2.length === 13) {
     deck1El.classList.add("shadow");
     deck3El.classList.add("shadow");
@@ -191,7 +182,6 @@ function render(cardPicked1, cardPicked2) {
     deck2El.classList.remove("back-blue");
     deck4El.classList.remove("back-blue");
   }
-  
 }
 
 function renderBooks() {
@@ -211,22 +201,13 @@ function renderBooks() {
 
 function getWinner() {
   if (deck2.length === 52 || deck4.length === 0) {
-    winMessage.textContent = "Congratulations Player 1 has Won the Game"
+    winMessage.textContent = "Congratulations Player 1 has Won the Game";
   }
   if (deck4.length === 52 || deck2.length === 0) {
-    winMessage.textContent = "Congratulations Player 2 has Won the Game"
+    winMessage.textContent = "Congratulations Player 2 has Won the Game";
   }
 }
-
 
 //*** DONE display the war cards
 //*** DONE render my win message
 //*** DONE make a condition if player runs out of cards they lose
-
-
-
-
-
-
-
-
